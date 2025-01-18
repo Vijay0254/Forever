@@ -137,7 +137,7 @@ const ShopContextProvider = ({ children }) => {
           }
         }
         catch(err){
-          consol.log(`Error in Add to Cart - ${err}`)
+          console.log(`Error in Add to Cart - ${err}`)
         }
       }      
     }
