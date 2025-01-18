@@ -30,7 +30,7 @@ app.use(cors({
     maxAge: 7200 // Max age for preflight requests (2 hours)
 }));
 
-// app.options('*', cors()); // Handle preflight requests
+app.options('*', cors()); // Handle preflight requests
 
 app.use((req, res, next) => {
     const allowedOrigins = [
