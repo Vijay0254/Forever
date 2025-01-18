@@ -100,7 +100,7 @@ const Placeorder = () => {
       }
 
       if(method === 'cod'){
-        const response = await axios.post(`/api/order/place/cod`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
+        const response = await axios.post(`/api/order/place/cod`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }
@@ -130,7 +130,7 @@ const Placeorder = () => {
         }
       }
       if(method === 'stripe'){
-        const response = await axios.post(`/api/order/place/stripe`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
+        const response = await axios.post(`/api/order/place/stripe`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }
@@ -152,7 +152,7 @@ const Placeorder = () => {
         }
       }
       if(method === 'razorpay'){
-        const response = await axios.post(`/api/order/place/razorpay`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
+        const response = await axios.post(`/api/order/place/razorpay`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }
