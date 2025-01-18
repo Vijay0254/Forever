@@ -14,7 +14,7 @@ const orderRouter = require('./Router/orderRouter')
 
 //Middleware
 app.use(cors({
-    origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL],
+    origin: '*',
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true
 }))
