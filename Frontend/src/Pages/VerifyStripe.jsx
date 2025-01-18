@@ -17,7 +17,7 @@ const VerifyStripe = () => {
 
     async function verifyStripe(){
         try{
-            const response = await axios.post(`/api/order/verify/stripe`, {orderId: orderId, success: success}, {withCredentials: true})
+            const response = await axios.post(`/api/order/verify/stripe`, {orderId: orderId, success: success}, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
             if(response.data.message == "Internal Server Error"){
                 navigate('/500')
             }

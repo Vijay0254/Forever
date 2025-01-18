@@ -24,7 +24,7 @@ const Navbar = () => {
 
     async function handleLogout(){
         try{
-            const response = await axios.get(`/api/auth/user/logout`, {withCredentials: true})
+            const response = await axios.get(`/api/auth/user/logout`, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
             if(response.data.message == "Internal Server Error"){
                 navigate('/500')
             }

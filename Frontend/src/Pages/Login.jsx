@@ -21,7 +21,7 @@ const Login = () => {
     event.preventDefault()
     try{
       if(currentState === "Sign Up"){
-        const response = await axios.post(`/api/auth/user/signup`, {name: name, email: email, password: password}, {withCredentials: true})
+        const response = await axios.post(`/api/auth/user/signup`, {name: name, email: email, password: password}, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }
@@ -51,7 +51,7 @@ const Login = () => {
         }
       }
       else{
-        const response = await axios.post(`/api/auth/user/login`, {email: email, password: password}, {withCredentials: true})
+        const response = await axios.post(`/api/auth/user/login`, {email: email, password: password}, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }
