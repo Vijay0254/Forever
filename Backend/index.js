@@ -20,26 +20,46 @@ app.use(cors({
 }))
 
 app.use((req, res, next) => {
+    const allowedOrigins = [
+        process.env.FRONTEND_URL,
+        process.env.ADMIN_URL
+    ];
+    const origin = req.headers.origin;
+
+    // Allow only specific origins
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+    }
+
+    // Methods allowed
     res.setHeader(
-      "Access-Control-Allow-Origin",
-      "*"
+        "Access-Control-Allow-Methods",
+        "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"
     );
+
+    // Headers allowed
     res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE"
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
     );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
-    );
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    res.setHeader("Access-Control-Allow-Private-Network", true);
-    //  Firefox caps this at 24 hours (86400 seconds). Chromium (starting in v76) caps at 2 hours (7200 seconds). The default value is 5 seconds.
-    res.setHeader("Access-Control-Max-Age", 7200);
-  
+
+    // Allow credentials for cookies/auth
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+
+    // Optional: Allow private network if needed (e.g., for local devices)
+    res.setHeader("Access-Control-Allow-Private-Network", "true");
+
+    // Max age for preflight requests (2 hours)
+    res.setHeader("Access-Control-Max-Age", "7200");
+
+    // Handle preflight OPTIONS requests
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(204); // Respond OK for preflight checks
+    }
+
     next();
-  });
-  
+});
+
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
