@@ -14,7 +14,7 @@ const orderRouter = require('./Router/orderRouter')
 
 //Middleware
 app.use(cors({
-    origin: '*',
+    origin: ['https://forever-admin-bice.vercel.app/', 'https://forever-frontend-sandy.vercel.app/'],
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true
 }))
