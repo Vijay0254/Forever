@@ -1,20 +1,24 @@
-  {
+{
     "version": 2,
     "builds": [
-        {
-            "src": "index.js",
-            "use": "@vercel/node",
-            "config": {
-                "includeFiles": [
-                    "dist/**"
-                ]
-            }
+      {
+        "src": "index.js",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": ["dist/**"]
         }
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "index.js"
-        }
+      {
+        "src": "/(.*)",
+        "headers": {
+          "Access-Control-Allow-Origin": "https://forever-admin-bice.vercel.app, https://forever-frontend-sandy.vercel.app",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Credentials": "true"
+        },
+        "dest": "index.js"
+      }
     ]
-}
+  }
+  
