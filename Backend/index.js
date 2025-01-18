@@ -22,20 +22,11 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-// Debug origin
-app.use((req, res, next) => {
-    console.log('Request Origin:', req.headers.origin);
-    next();
-});
-
 //Path
 app.use('/api/auth', userRouter)
 app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
-
-// Preflight Requests
-app.options('*', cors());
 
 app.listen(PORT, (err) =>{
     err ? console.log(`Error in Running Server - ${err}`) : console.log(`Server Running in Port ${PORT}`)
