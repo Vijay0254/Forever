@@ -25,7 +25,8 @@ app.use(cors({
         "X-Requested-With",
         "Origin",
         "Access-Control-Request-Method",
-        "Access-Control-Request-Headers"
+        "Access-Control-Request-Headers",
+        "Access-Control-Allow-Origin"
     ],
     maxAge: 7200 // Max age for preflight requests (2 hours)
 }));
