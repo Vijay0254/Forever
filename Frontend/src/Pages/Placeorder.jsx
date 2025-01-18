@@ -43,7 +43,8 @@ const Placeorder = () => {
       order_id: order.id,
       receipt: order.receipt,
       handler: async(response) =>{
-        const validateResponse = await axios.post("/api/order/verify/razorpay", response, {withCredentials: true, headers: 'https://forever-frontend-sandy.vercel.app'})
+        const validateResponse = await axios.post("/api/order/verify/razorpay", response, {withCredentials: true})
+        
         if(validateResponse.data.message == "Internal Server Error"){
            navigate('/500')
         }
@@ -100,7 +101,7 @@ const Placeorder = () => {
       }
 
       if(method === 'cod'){
-        const response = await axios.post(`/api/order/place/cod`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+        const response = await axios.post(`/api/order/place/cod`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }
@@ -130,7 +131,7 @@ const Placeorder = () => {
         }
       }
       if(method === 'stripe'){
-        const response = await axios.post(`/api/order/place/stripe`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+        const response = await axios.post(`/api/order/place/stripe`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }
@@ -152,7 +153,7 @@ const Placeorder = () => {
         }
       }
       if(method === 'razorpay'){
-        const response = await axios.post(`/api/order/place/razorpay`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+        const response = await axios.post(`/api/order/place/razorpay`, {items: orderItems, amount: Number(getCartAmount() + delivery_fee), address: details}, {withCredentials: true})
         if(response.data.message == "Internal Server Error"){
           navigate('/500')
         }

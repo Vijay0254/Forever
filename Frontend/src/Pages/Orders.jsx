@@ -15,7 +15,7 @@ const Orders = () => {
 
   async function getOrders(){
     try{
-      const response = await axios.get(`/api/order/get/user/${user._id}`, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+      const response = await axios.get(`/api/order/get/user/${user._id}`, {withCredentials: true})
       if(response.data.message == "Internal Server Error"){
         navigate('/500')
       }

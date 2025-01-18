@@ -18,7 +18,7 @@ const ShopContextProvider = ({ children }) => {
 
   async function fetchProducts(){
     try{
-      const response = await axios.get(`/api/product/get/all`, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+      const response = await axios.get(`/api/product/get/all`, {withCredentials: true})
       if(response.data.message == "Internal Server Error"){
         navigate('/500')
       }
@@ -33,7 +33,7 @@ const ShopContextProvider = ({ children }) => {
 
   async function getUserCart(){
     try{
-      const response = await axios.get(`/api/cart/get`, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+      const response = await axios.get(`/api/cart/get`, {withCredentials: true})
       if(response.data.message == "Internal Server Error"){
         navigate('/500')
       }
@@ -53,7 +53,7 @@ const ShopContextProvider = ({ children }) => {
 
   async function verifyToken(){
     try{
-      const response = await axios.get(`/api/auth/user/verify`, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+      const response = await axios.get(`/api/auth/user/verify`, {withCredentials: true})
       if(response.data.message == "Internal Server Error"){
         navigate('/500')
       }
@@ -71,7 +71,7 @@ const ShopContextProvider = ({ children }) => {
 
   async function verifyToken2(){
     try{
-      const response = await axios.get(`/api/auth/user/verify`, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+      const response = await axios.get(`/api/auth/user/verify`, {withCredentials: true})
       if(response.data.message == "Internal Server Error"){
         navigate('/500')
       }
@@ -119,7 +119,7 @@ const ShopContextProvider = ({ children }) => {
 
       if(user){
         try{
-          const response = await axios.post(`/api/cart/add`, {itemId: itemId, size: size}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+          const response = await axios.post(`/api/cart/add`, {itemId: itemId, size: size}, {withCredentials: true})
           if(response.data.message == "Internal Server Error"){
             navigate('/500')
           }
@@ -172,7 +172,7 @@ const ShopContextProvider = ({ children }) => {
 
       if(user){
         try{
-          const response = await axios.post(`/api/cart/update`, {itemId: itemId, size: size, quantity: quantity}, {withCredentials: true, headers: {'Origin': 'https://forever-frontend-sandy.vercel.app', 'Content-Type': 'application/json'}})
+          const response = await axios.post(`/api/cart/update`, {itemId: itemId, size: size, quantity: quantity}, {withCredentials: true})
           if(response.data.message == "Internal Server Error"){
             navigate('/500')
           }
