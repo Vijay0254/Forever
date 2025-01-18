@@ -16,7 +16,6 @@ const orderRouter = require('./Router/orderRouter')
 app.use(cors({
     origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL],
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
-    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }))
 app.use(cookieParser())
