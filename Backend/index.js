@@ -19,6 +19,8 @@ app.use(cors({
     credentials: true
 }))
 
+app.options('*', cors()); // Handle preflight requests
+
 app.use((req, res, next) => {
     const allowedOrigins = [
         process.env.FRONTEND_URL,
